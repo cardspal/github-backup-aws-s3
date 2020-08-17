@@ -8,8 +8,6 @@ const github = new GitHubApi()
 const requiredOptions = [
   "githubAccessToken",
   "s3BucketName",
-  "s3AccessKeyId",
-  "s3AccessSecretKey"
 ]
 
 module.exports = function(options) {
@@ -64,7 +62,8 @@ module.exports = function(options) {
     const date = new Date().toISOString()
     const s3 = new aws.S3({
       accessKeyId: options.s3AccessKeyId,
-      secretAccessKey: options.s3AccessSecretKey
+      secretAccessKey: options.s3AccessSecretKey,
+      sessionToken: options.s3AccessSessionToken
     })
 
     const uploader = Promise.promisify(s3.upload.bind(s3))
