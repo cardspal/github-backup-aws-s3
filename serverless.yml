@@ -5,6 +5,18 @@ provider:
   region: ap-southeast-1
   profile: tooling
   timeout: 600
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - S3:PutObject
+      Resource: "arn:aws:s3:::cardspal-github-backup/*"
+    - Effect: "Allow"
+      Action:
+        - secretsmanager:GetResourcePolicy
+        - secretsmanager:GetSecretValue
+        - secretsmanager:DescribeSecret
+        - secretsmanager:ListSecretVersionIds
+      Resource: "arn:aws:secretsmanager:ap-southeast-1:746458061666:secret:github-f4yz6c"
 functions:
   runBackup:
     handler: handler.runBackup
