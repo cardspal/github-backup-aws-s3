@@ -21,6 +21,6 @@ functions:
   runBackup:
     handler: handler.runBackup
     events:
-      - schedule: cron(0 3 * * ? *) # 3am everyday
+      - schedule: cron(0 19 * * ? *) # 3am everyday. note that aws cron is utc(+0) timezone
     # events:
     #   - schedule: ${opt:schedule-expression} # http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
