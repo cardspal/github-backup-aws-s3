@@ -9,8 +9,6 @@ module.exports.runBackup = (event, context, callback) => {
   secrets.getSecretValue({
     SecretId: 'github'
   }, (err, data) => {
-    console.log('err', err)
-    console.log('data', data)
     const secret = JSON.parse(data.SecretString)
     const githubAccessToken = secret['personal-access-token']
 
